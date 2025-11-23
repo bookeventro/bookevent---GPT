@@ -1,0 +1,44 @@
+// components/marketing/CategoriesSection.tsx
+const categories = [
+  { label: 'Muzică', desc: 'Formații, DJ, soliști', icon: '🎵' },
+  { label: 'Foto & Video', desc: 'Fotografi, videografi', icon: '📷' },
+  { label: 'Candy Bar & Catering', desc: 'Dulciuri, bar, meniuri', icon: '🍰' },
+  { label: 'Beauty & Styling', desc: 'Make-up, hair, styling', icon: '💄' },
+  { label: 'Locații & Restaurante', desc: 'Sali, terase, restaurante', icon: '🏰' },
+  { label: 'Decorațiuni & Tehnic', desc: 'Decor, lumini, sunet', icon: '✨' },
+  { label: 'Organizare & Servicii', desc: 'MC, organizatori, alte servicii', icon: '📝' },
+];
+
+export default function CategoriesSection() {
+  return (
+    <section className="space-y-5">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">
+            Categorii principale pentru nuntă
+          </h2>
+          <p className="text-sm text-slate-400">
+            Alege tipul de servicii pentru evenimentul tău.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {categories.map((cat) => (
+          <button
+            key={cat.label}
+            className="group flex flex-col items-start gap-2 rounded-2xl border border-slate-800/70 bg-slate-950/70 px-4 py-3 text-left text-sm text-slate-200 shadow-[0_14px_40px_rgba(15,23,42,0.9)] transition hover:border-sky-400/80 hover:bg-slate-900/80"
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-slate-900/80 text-lg">
+                {cat.icon}
+              </div>
+              <span className="font-semibold">{cat.label}</span>
+            </div>
+            <span className="text-[12px] text-slate-400">{cat.desc}</span>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
