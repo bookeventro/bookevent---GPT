@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createOfferRequest, getRequestById, listRequestsByProvider } from '@/lib/db/fakeDb'
-import { offerRequestSchema } from '@/lib/validations/requestSchema'
+import { offerRequestSchema } from './validators'
+
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
