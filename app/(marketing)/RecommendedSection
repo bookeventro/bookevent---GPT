@@ -1,0 +1,74 @@
+// components/marketing/RecommendedSection.tsx
+const providers = Array.from({ length: 4 }).map((_, idx) => ({
+  id: idx,
+  name: 'Formația Allegro Band',
+  city: 'Timișoara',
+  priceFrom: '1500 €',
+  rating: '4.9',
+  tags: ['Verificat', 'Recomandat', 'Răspunde rapid'],
+}));
+
+export default function RecommendedSection() {
+  return (
+    <section className="space-y-5">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-50 sm:text-xl">
+            Prestatori recomandați în Zona Vest
+          </h2>
+          <p className="text-sm text-slate-400">
+            Exemple de formații actuale – date demo, urmează integrarea cu baza reală.
+          </p>
+        </div>
+        <button className="text-xs font-medium text-sky-300 hover:text-sky-200">
+          Vezi toate →{' '}
+        </button>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {providers.map((p) => (
+          <article
+            key={p.id}
+            className="flex flex-col overflow-hidden rounded-3xl border border-slate-700/80 bg-slate-950/80 shadow-[0_18px_55px_rgba(15,23,42,0.9)]"
+          >
+            <div className="relative h-36 overflow-hidden bg-gradient-to-tr from-sky-500/70 via-purple-500/70 to-pink-500/70">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.15),_transparent_60%)]" />
+            </div>
+            <div className="space-y-2 px-4 pb-4 pt-3">
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="truncate text-sm font-semibold text-slate-50">
+                  {p.name}
+                </h3>
+                <span className="rounded-full bg-slate-900/90 px-2 py-0.5 text-[11px] text-amber-300">
+                  {p.rating}★
+                </span>
+              </div>
+              <p className="text-[12px] text-slate-400">
+                {p.city} • de la{' '}
+                <span className="font-semibold text-slate-100">{p.priceFrom}</span>
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {p.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-slate-900/90 px-2 py-0.5 text-[10px] text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-2 flex gap-2">
+                <button className="flex-1 rounded-full bg-slate-900/90 px-3 py-1.5 text-[11px] font-medium text-slate-100">
+                  Vezi profil
+                </button>
+                <button className="flex-1 rounded-full bg-gradient-to-r from-sky-500 via-cyan-400 to-indigo-500 px-3 py-1.5 text-[11px] font-semibold text-slate-950">
+                  Cere ofertă
+                </button>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
